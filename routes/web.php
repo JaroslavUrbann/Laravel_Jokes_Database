@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get("/add/joke", "JokeController@Create")->middleware("auth");
 Route::post("/store/joke", "JokeController@Store")->middleware("auth");
 Route::get("/jokes/all", "JokeController@Index");

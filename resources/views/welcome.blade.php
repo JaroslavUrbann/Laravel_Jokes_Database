@@ -67,8 +67,12 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                        <a href="{{ url('/jokes/all') }}">Home</a>
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/add/jokes') }}">New joke</a>
+                        <a href="{{ url('/add/category') }}">New category</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -81,16 +85,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Funny Jokes Database
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs">Facebook</a>
+                    <a href="https://laracasts.com">Twitter</a>
+                    <a href="https://laravel-news.com">Instagram</a>
                 </div>
             </div>
         </div>
