@@ -10,13 +10,19 @@ use Auth;
 class JokeController extends Controller
 {
     public function Index(){
-        $jokes = Joke::all();
         $categories = Category::all();
-        return view("jokes.index")->with("jokes", $jokes);
+        $jokes = Joke::all();
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
+    }
+
+    public function ShowCategory($category_id){
+        $categories = Category::all();
+        $jokes = Joke::all()->where("category_id", $category_id);
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
     }
 
     public function Create(){
-        return vies("jokes.create");
+        return view("jokes.create");
     }
 
     public function Store(Request $request){
@@ -35,8 +41,9 @@ class JokeController extends Controller
             echo $e;
         }
         finally{
+            $categories = Category::all();
             $jokes = Joke::all();
-            return view("jokes.index")->with("jokes", $jokes);
+            return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
         }
     }
 }

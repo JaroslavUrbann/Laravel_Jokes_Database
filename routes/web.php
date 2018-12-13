@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get("/add/joke", "JokeController@Create")->middleware("auth");
+Route::get("/add/joke", "JokeController@Create")->name('add joke')->middleware("auth");
 Route::post("/store/joke", "JokeController@Store")->middleware("auth");
-Route::get("/jokes/all", "JokeController@Index");
+Route::get("/jokes/all", "JokeController@Index")->name("jokes all");
 Route::get("/jokes/{category_id}", "JokeController@ShowCategory");
-Route::get("/add/category", "CategoryController@Create")->middleware("auth");
-Route::get("/store/category", "CategoryController@Store")->middleware("auth");
+Route::get("/add/category", "CategoryController@Create")->name('add category')->middleware("auth");
+Route::post("/store/category", "CategoryController@Store")->middleware("auth");

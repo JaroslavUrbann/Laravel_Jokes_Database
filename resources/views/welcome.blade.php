@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Jokes Database</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
                 <div class="top-right links">
                         <a href="{{ url('/jokes/all') }}">Home</a>
                     @auth
-                        <a href="{{ url('/add/jokes') }}">New joke</a>
+                        <a href="{{ url('/add/joke') }}">New joke</a>
                         <a href="{{ url('/add/category') }}">New category</a>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
@@ -85,7 +85,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Funny Jokes Database
+                    Jokes Database
                 </div>
 
                 <div class="links">
