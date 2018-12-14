@@ -16,7 +16,7 @@ class CreateJokesTable extends Migration
         Schema::create('jokes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string("text");
+            $table->text("text");
             $table->integer("users_id")->unsigned();
             $table->foreign("users_id")->references("id")->on("users");
             $table->integer("category_id")->unsigned();

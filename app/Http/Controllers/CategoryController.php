@@ -32,4 +32,13 @@ class CategoryController extends Controller
             return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
         }
     }
+
+    public function Delete($id){
+        $category = Category::find($id);
+        $category->delete();
+        
+        $categories = Category::all();
+        $jokes = Joke::all();
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
+    }
 }

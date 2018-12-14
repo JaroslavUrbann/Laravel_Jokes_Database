@@ -15,6 +15,20 @@ class JokeController extends Controller
         return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
     }
 
+    public function Edit($id){
+        $joke = Joke::find($id);
+        return view("jokes.edit")->with("joke", $joke);
+    }
+
+    public function Delete($id){
+        $joke = Joke::find($id);
+        $joke->delete();
+        
+        $categories = Category::all();
+        $jokes = Joke::all();
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
+    }
+
     public function ShowCategory($category_id){
         $categories = Category::all();
         $jokes = Joke::all()->where("category_id", $category_id);
