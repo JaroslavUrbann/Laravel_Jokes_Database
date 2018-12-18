@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\URL;
 
 use Illuminate\Http\Request;
 use App\Joke;
@@ -36,28 +37,23 @@ class JokeController extends Controller
     }
 
     public function Create(){
-        return view("jokes.create");
+        $categories = Category::all();
+        return view("jokes.create")->with("categories", $categories);
     }
 
     public function Store(Request $request){
         $this->validate($request, [
             "text" => "required"
         ]);
+        echo $request->category;
 
-        try{
-            $joke = Joke::create([
-                "text" => $request->text,
-                "users_id"=> Auth::user()->id
-                // + žánr automaticky zvolen, možná přes url (/create/jokes/yomama)
-            ]);
-        }
-        catch(Exception $e){
-            echo $e;
-        }
-        finally{
-            $categories = Category::all();
-            $jokes = Joke::all();
-            return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
-        }
+        $joke = Joke::create([
+            "text" => $request->text,
+            "users_id"=> Auth::user()->id,
+            "category_id" => $request->category
+        ]);
+        $categories = Category::all();
+        $jokes = Joke::all();
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
     }
 }

@@ -35,6 +35,8 @@ class CategoryController extends Controller
 
     public function Delete($id){
         $category = Category::find($id);
+        $jokes = Joke::where("category_id", $id);
+        $jokes->delete();
         $category->delete();
         
         $categories = Category::all();

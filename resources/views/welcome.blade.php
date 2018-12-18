@@ -67,7 +67,7 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                        <a href="{{ url('/jokes/all') }}">Home</a>
+                        <a href="{{ url('/category/all') }}">Home</a>
                     @auth
                         <a href="{{ url('/add/joke') }}">New joke</a>
                         <a href="{{ url('/add/category') }}">New category</a>
@@ -89,9 +89,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Facebook</a>
-                    <a href="https://laracasts.com">Twitter</a>
-                    <a href="https://laravel-news.com">Instagram</a>
+                    <a href="https://facebook.com">Facebook</a>
+                    <a href="https://twitter.com">Twitter</a>
+                    <a href="https://instagram.com">Instagram</a>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ class CreateJokesTable extends Migration
             $table->text("text");
             $table->integer("users_id")->unsigned();
             $table->foreign("users_id")->references("id")->on("users");
-            $table->integer("category_id")->unsigned();
+            $table->integer("category_id")->nullable()->unsigned();
             $table->foreign("category_id")->references("id")->on("categories");
         });
     }

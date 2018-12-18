@@ -22,11 +22,11 @@
             @if($categories)
             <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{ url("/jokes/all") }}">All</a>
+                        <a href="{{ url("/category/all") }}">All</a>
                     </li>
                     @foreach($categories as $category)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{ url("/jokes/" . $category->id) }}">{{$category->name}}</a>
+                        <a href="{{ url("/category/" . $category->id) }}">{{$category->name}}</a>
                         <a href="{{ url("/delete/category/" . $category->id) }}" class="close">X</a>
                     </li>
                     @endforeach
