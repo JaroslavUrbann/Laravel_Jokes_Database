@@ -21,8 +21,8 @@ Route::post("/store/joke", "JokeController@Store")->middleware("auth");
 Route::get("/category/all", "JokeController@Index")->name("jokes all");
 Route::get("/category/{category_id}", "JokeController@ShowCategory");
 Route::get("/delete/joke/{id}", "JokeController@Delete")->middleware("auth");
-Route::get("/edit/jokes", "JokeController@Edit")->middleware("auth");
-Route::post("/update/{id}", "JokeController@Update")->middleware("auth");
+Route::get("/edit/joke/{id}", "JokeController@Edit")->middleware("auth");
+Route::post("/update/joke", "JokeController@Update")->middleware("auth");
 
 Route::get("/add/category", "CategoryController@Create")->name('add category')->middleware("auth");
 Route::post("/store/category", "CategoryController@Store")->middleware("auth");

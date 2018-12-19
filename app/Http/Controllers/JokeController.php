@@ -21,6 +21,19 @@ class JokeController extends Controller
         return view("jokes.edit")->with("joke", $joke);
     }
 
+    public function Update(Request $request){
+        $joke = Joke::find($request->id);
+
+        if($joke) {
+            $joke->text = $request->text;
+            $joke->save();
+        }
+
+        $categories = Category::all();
+        $jokes = Joke::all();
+        return view("jokes.index")->with("jokes", $jokes)->with("categories", $categories);
+    }
+
     public function Delete($id){
         $joke = Joke::find($id);
         $joke->delete();
@@ -45,7 +58,6 @@ class JokeController extends Controller
         $this->validate($request, [
             "text" => "required"
         ]);
-        echo $request->category;
 
         $joke = Joke::create([
             "text" => $request->text,
