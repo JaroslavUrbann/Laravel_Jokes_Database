@@ -2,11 +2,11 @@
 
 @section("content")
 <div class="container">
-    <form method="POST" action="{{ url("/update/joke") }}">
+    <form method="POST" action="{{ url("/update/joke") }}" id="editform">
         {{ csrf_field() }}
         <div>
             <label>Text</label>
-        <input name="text" type="text" value="{{ old("text") }}" placeholder="{{$joke->text}}">
+        <textarea class="form-control" rows="4" name="text" type="text" form="editform">{{$joke->text}}</textarea>
         <input type="hidden" name="id" value="{{$joke->id}}">
         </div>
         <div>
